@@ -20,7 +20,7 @@ const getWeatherAPI = async (latitude, longitude) => {
             lon: longitude,
             array_limit: 1,
             fields: "only_results,temp, condition_slug",
-            key: process.env.GETWEATHERAPIKEY,
+            key: "35d51453",
         },
     };
 

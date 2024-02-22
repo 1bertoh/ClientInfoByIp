@@ -11,7 +11,7 @@ const { default: axios } = require("axios");
  * }>}
  */
 const getIP = async (ip) => {
-        const endpoint = `https://apiip.net/api/check?ip=${ip}&accessKey=${process.env.GETAPIKEY}&fields=latitude,longitude,regionName,city`;
+        const endpoint = `https://apiip.net/api/check?ip=${ip}&accessKey=5c102a0c-5b49-4f76-80d0-77e03524c70b&fields=latitude,longitude,regionName,city`;
     
         return axios.get(endpoint)
         .then(res => {
