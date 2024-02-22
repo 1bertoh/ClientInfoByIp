@@ -11,11 +11,10 @@ import MountainColored from "@/icons/mountain-colored";
 import Tooltip from "./_components/Tooltip";
 import axios from "axios";
 
-export default async function Home({req}) {
-    console.log(req, 'inicial')
+export default async function Home() {
     const d = await fetch(process.env.DOMAIN+"/api/get-ip");
     const t = await d.json()
-    const IP = "164.163.206.106";
+    const IP = t.ip;
     const local = [
         {
             icon: (isOnWater) => isOnWater ? <WaterDropColored className="h-auto w-7" /> : <DropWater className="h-auto w-7" />,
