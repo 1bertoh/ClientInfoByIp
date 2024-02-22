@@ -61,7 +61,7 @@ input:disabled {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    margin-left: 10px;
+    margin-left: -20px;
     top: 50%;
     left: 100%;
     transform: translate(0, -50%);
@@ -71,6 +71,7 @@ input:disabled {
     .tooltip .tooltiptext {
         width: calc(120px - 40%);
         left: 70% ;
+        margin-left: 30px;
         /* transform: scale(0.75); */
     }
     

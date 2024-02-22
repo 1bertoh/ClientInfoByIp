@@ -74,7 +74,7 @@ export default async function Home({ params }) {
             </div>
             <div className="sm:flex gap-3 mt-20 items-center">
                 <span className="sm:block font-bold">Está na água?</span>
-                <div className="flex">
+                <div className="flex gap-3">
                     {local.map((l) => {
                         return (
                             <div
