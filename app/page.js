@@ -13,8 +13,8 @@ import axios from "axios";
 
 export default async function Home() {
     const d = await fetch(process.env.DOMAIN+"/api/get-ip");
-    const t = await d.json()
-    const IP = t.ip;
+    // const t = await d.json()
+    const IP = '164.163.206.106';
     const local = [
         {
             icon: (isOnWater) => isOnWater ? <WaterDropColored className="h-auto w-7" /> : <DropWater className="h-auto w-7" />,
