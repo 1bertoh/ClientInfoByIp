@@ -33,12 +33,9 @@ export default async function Home() {
     const userInfo = await getIP(IP)
     const lat = userInfo.latitude
     const lon = userInfo.longitude
-    try{
-        const isOnWater = await getIsOnWaterAPI(lat, lon)
-    } catch(e) {
-        const isOnWater = {isOnWater: false}
+    // const isOnWater = await getIsOnWaterAPI(lat, lon) SÓ FUNCIONA LOCALMENTE
+    const isOnWater = {isOnWater: false}
 
-    }
     const weather = await getWeatherAPI(lat, lon)
 
     return (
