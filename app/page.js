@@ -87,7 +87,7 @@ export default async function Home() {
                                 width={220}
                                 height={220}
                                 alt="weather"
-                                src={`https://assets.hgbrasil.com/weather/icons/conditions/rain.svg`}
+                                src={`https://assets.hgbrasil.com/weather/icons/conditions/${weather.condition_slug}.svg`}
                             />
                         </Tooltip>
 
