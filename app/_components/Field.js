@@ -21,7 +21,7 @@ const Field = ({ label, prefix, value, isDisabled, id }) => {
                     type="text"
                     disabled={isDisabled}
                     id={id}
-                    className="rounded-lg  block w-full ps-20 p-3  "
+                    className="rounded-lg cursor-not-allowed block w-full ps-20 p-3  "
                     value={value}
                 />
             </div>
