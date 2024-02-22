@@ -34,10 +34,10 @@ export default async function Home() {
     const lat = userInfo.latitude
     const lon = userInfo.longitude
 
-    // const isOnWater = await getIsOnWaterAPI(lat, lon)
+    const isOnWater = await getIsOnWaterAPI(lat, lon)
     const weather = await getWeatherAPI(lat, lon)
 
-    const isOnWater = {isOnWater: true}
+    // const isOnWater = {isOnWater: true}
     return (
         <main className="container min-h-screen pt-4 text-lg">
             <Field
