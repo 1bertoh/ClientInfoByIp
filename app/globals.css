@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+}
+
+.container {
+    max-width: 448px;
+    height: 830px;
+    margin: auto;
+}
+
+input:disabled {
+    background-color: #f2f4f6;
+    color: rgb(139, 138, 138);
+}
+
+.input-bg-color {
+    background-color: #f2f4f6;
+}
+
+.on-local-water {
+    background-color: #d5f3ff;
+    color: #088dc2;
+}
+.on-local-ground {
+    background-color: #ffeed5;
+    color: #7e3308;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    margin-left: 10px;
+    top: 50%;
+    left: 100%;
+    transform: translate(0, -50%);
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 39%;
+    left: -4px;
+    transform: rotate(90deg);
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.weather-icon{
+    left: 50%;
+    /* right: 50%; */
+    transform: translate(-50%);
+}
