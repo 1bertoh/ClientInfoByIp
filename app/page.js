@@ -9,10 +9,13 @@ import getWeatherAPI from "@/api/getWeatherAPI";
 import WaterDropColored from "@/icons/water-drop-colored";
 import MountainColored from "@/icons/mountain-colored";
 import Tooltip from "./_components/Tooltip";
+import axios from "axios";
 
 export default async function Home({clientIp}) {
     console.log(clientIp, 'Ip do cliente')
-    const IP = "164.163.206.106";
+    const d = await fetch("https://client-info-by-ip.vercel.app/api/get-ip");
+    const t = await d.json()
+    const IP = t.ip;
     const local = [
         {
             icon: (isOnWater) => isOnWater ? <WaterDropColored className="h-auto w-7" /> : <DropWater className="h-auto w-7" />,
