@@ -8,15 +8,14 @@ export default function Home() {
     const router = useRouter();
 
     function teste() {
-        router.push("/ip/" + "164.163.206.106");
-        // axios.get("https://client-info-by-ip.vercel.app/api/get-ip")
-        // .then(e => {
-        //     const ip = e.data.ip
-        //       router.push("/ip/"+ip);
-        //     }).then(e => {
+        axios.get("https://client-info-by-ip.vercel.app/api/get-ip")
+        .then(e => {
+            const ip = e.data.ip
+              router.push("/ip/"+ip);
+            }).then(e => {
                 
-        //     router.push("/ip/"+'164.163.206.106');
-        // })
+            // router.push("/ip/"+'164.163.206.106');
+        })
     }
 
     return (
