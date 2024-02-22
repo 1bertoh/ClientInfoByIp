@@ -24,7 +24,7 @@ const Home = () => {
         const fetchData = async () => {
             try {
                 const responseIP = await fetch(
-                    process.env.DOMAIN + "/api/get-ip"
+                    process.env.DOMAIN+"/api/get-ip"
                 );
                 const dataIP = await responseIP.json();
                 setIP(dataIP.ip);
