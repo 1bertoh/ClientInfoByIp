@@ -14,7 +14,7 @@ import axios from "axios";
 export default async function Home() {
     const d = await fetch(process.env.DOMAIN+"/api/get-ip");
     const t = await d.json()
-    const IP = t.ip;
+    const IP = "164.163.206.106";
     const local = [
         {
             icon: (isOnWater) => isOnWater ? <WaterDropColored className="h-auto w-7" /> : <DropWater className="h-auto w-7" />,
@@ -33,8 +33,8 @@ export default async function Home() {
     const userInfo = await getIP(IP)
     const lat = userInfo.latitude
     const lon = userInfo.longitude
-    const isOnWater = await getIsOnWaterAPI(lat, lon) //SÓ FUNCIONA LOCALMENTE
-    // const isOnWater = {isOnWater: false}
+    // const isOnWater = await getIsOnWaterAPI(lat, lon) //SÓ FUNCIONA LOCALMENTE
+    const isOnWater = {isOnWater: false}
 
     const weather = await getWeatherAPI(lat, lon)
 
@@ -79,7 +79,7 @@ export default async function Home() {
                 })}
             </div>
             <div className="mt-16">
-                <span className="font-bold">Está muito calor?</span>
+                <span className="font-bold sm:block">Está muito calor?</span>
                 <div className="input-bg-color mt-2 rounded-xl">
                     <div className="inline-block " style={{marginLeft: '50%', transform: 'translate(-50%)'}}>
                         <Tooltip msg={weather.condition_slug === 'clear_day' ? "Muito" : 'Pouco' } className="mx-auto">
