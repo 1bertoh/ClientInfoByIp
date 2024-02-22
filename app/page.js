@@ -33,11 +33,14 @@ export default async function Home() {
     const userInfo = await getIP(IP)
     const lat = userInfo.latitude
     const lon = userInfo.longitude
+    try{
+        const isOnWater = await getIsOnWaterAPI(lat, lon)
+    } catch(e) {
+        const isOnWater = {isOnWater: false}
 
-    const isOnWater = await getIsOnWaterAPI(lat, lon)
+    }
     const weather = await getWeatherAPI(lat, lon)
 
-    // const isOnWater = {isOnWater: true}
     return (
         <main className="container min-h-screen pt-4 text-lg">
             <Field
