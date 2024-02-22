@@ -15,7 +15,8 @@ const  getIsOnWaterAPI = async (latitute, longitute) => {
             longitude: longitute,
         },
         headers: {
-            "X-RapidAPI-Key":process.env.RAPIDAPIKEY,
+            "X-RapidAPI-Key":
+                "3435807ce3msh4d73e4e2fc1054ap1d6a1bjsn13acf368cdad",
             "X-RapidAPI-Host": "isitwater-com.p.rapidapi.com",
         },
     };
