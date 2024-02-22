@@ -39,11 +39,6 @@ const getWeatherAPI = async (latitude, longitude) => {
     } catch (error) {
         console.error(error);
     }
-
-    
-    // const ENDPOINT = `https://api.hgbrasil.com/weather?array_limit=1&fields=only_results,temp,city_name,forecast,max,min,date&key=${process.env.GETWEATHERAPIKEY}&lat=${latitude}&lon=${longitude}`;
-
-    // const res = axios.get(ENDPOINT).then(e => console.log(e.data, 'res'))
 }
 
 export default getWeatherAPI
