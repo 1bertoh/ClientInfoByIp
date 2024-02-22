@@ -5,9 +5,9 @@
 const Tooltip = ({children, msg}) => {
 
     return (
-        <div class="tooltip">
+        <div className="tooltip">
             {children}
-            <span class="tooltiptext">{msg}</span>
+            <span className="tooltiptext sm:text-lg text-sm">{msg}</span>
         </div>
     );
 }

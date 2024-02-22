@@ -4,7 +4,7 @@
  */
 const Field = ({ label, prefix, value, isDisabled, id }) => {
     return (
-        <div className="text-lg">
+        <div className="">
             {
                 label && (
                     <label htmlFor={id} className="block font-bold">
@@ -13,7 +13,7 @@ const Field = ({ label, prefix, value, isDisabled, id }) => {
 
                 )
             }
-            <div className="relative">
+            <div className="relative w-" style={{width: 'initial'}}>
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                     {prefix}
                 </div>

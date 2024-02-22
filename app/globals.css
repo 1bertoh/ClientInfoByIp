@@ -22,8 +22,9 @@ body {
 
 .container {
     max-width: 448px;
-    height: 830px;
+    /* height: 830px; */
     margin: auto;
+    margin-bottom: 2em;
 }
 
 input:disabled {
@@ -52,7 +53,7 @@ input:disabled {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: calc(120px - 3vw);
     background-color: black;
     color: #fff;
     text-align: center;
@@ -64,6 +65,15 @@ input:disabled {
     top: 50%;
     left: 100%;
     transform: translate(0, -50%);
+}
+
+@media (max-width: 400px) {
+    .tooltip .tooltiptext {
+        width: calc(120px - 40%);
+        left: 70% ;
+        /* transform: scale(0.75); */
+    }
+    
 }
 
 .tooltip .tooltiptext::after {

@@ -1,13 +1,12 @@
 'use client'
 
-import getIP from "@/api/getIP";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
     const router = useRouter();
 
-    function teste() {
+    function getIP() {
         axios.get("https://client-info-by-ip.vercel.app/api/get-ip")
         .then(e => {
             const ip = e.data.ip
@@ -21,7 +20,7 @@ export default function Home() {
     return (
         <main >
             <div>
-                <button onClick={teste} >Click me</button>
+                <button onClick={getIP} >Click me</button>
             </div>
         </main>
     );

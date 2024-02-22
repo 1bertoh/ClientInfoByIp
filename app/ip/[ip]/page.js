@@ -49,7 +49,7 @@ export default async function Home({ params }) {
     const weather = await getWeatherAPI(lat, lon);
 
     return (
-        <main className="container min-h-screen pt-4 text-lg">
+        <main className="container min-h-screen pt-4 sm:text-lg text-base">
             <Field
                 isDisabled={true}
                 label={"IP do computador"}
@@ -72,25 +72,27 @@ export default async function Home({ params }) {
                     value={userInfo.regionName}
                 />
             </div>
-            <div className="flex gap-3 mt-20 items-center">
-                <span className="font-bold">Está na água?</span>
-                {local.map((l) => {
-                    return (
-                        <div
-                            key={l.text}
-                            className={`flex p-3 rounded-lg gap-3 w-min ${l.className(
-                                isOnWater.isOnWater
-                            )}`}
-                        >
-                            <span>{l.text}</span>
-                            {l.icon(isOnWater.isOnWater)}
-                        </div>
-                    );
-                })}
+            <div className="sm:flex gap-3 mt-20 items-center">
+                <span className="sm:block font-bold">Está na água?</span>
+                <div className="flex">
+                    {local.map((l) => {
+                        return (
+                            <div
+                                key={l.text}
+                                className={`flex p-3 rounded-lg gap-3 w-min ${l.className(
+                                    isOnWater.isOnWater
+                                )}`}
+                            >
+                                <span>{l.text}</span>
+                                {l.icon(isOnWater.isOnWater)}
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
-            <div className="mt-16">
+            <div className="mt-10">
                 <span className="font-bold sm:block">Está muito calor?</span>
-                <div className="input-bg-color mt-2 rounded-xl">
+                <div className="input-bg-color overflow-hidden mt-2 rounded-xl">
                     <div
                         className="inline-block "
                         style={{
