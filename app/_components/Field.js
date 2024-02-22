@@ -7,7 +7,7 @@ const Field = ({ label, prefix, value, isDisabled, id }) => {
         <div className="">
             {
                 label && (
-                    <label htmlFor={id} className="block font-bold">
+                    <label htmlFor={id} className="block ps-1 font-bold">
                         {label}
                     </label>
 

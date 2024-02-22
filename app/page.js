@@ -32,7 +32,6 @@ export default function Home() {
               router.push("/ip/"+ip);
             }).then(e => {
                 
-            // router.push("/ip/"+'164.163.206.106');
         })
     }
 
