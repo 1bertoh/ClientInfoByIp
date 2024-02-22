@@ -11,9 +11,8 @@ import MountainColored from "@/icons/mountain-colored";
 import Tooltip from "./_components/Tooltip";
 import axios from "axios";
 
-export default async function Home({clientIp}) {
-    console.log(clientIp, 'Ip do cliente')
-    const d = await fetch("https://client-info-by-ip.vercel.app/api/get-ip");
+export default async function Home() {
+    const d = await fetch(process.env.DOMAIN+"/api/get-ip");
     const t = await d.json()
     const IP = t.ip;
     const local = [
