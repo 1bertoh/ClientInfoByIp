@@ -23,17 +23,8 @@ export default async function handler(req, res) {
     const lat = userInfo.latitude;
     const lon = userInfo.longitude;
     const isOnWater = await getIsOnWaterAPI(lat, lon)
-    try{
-        const weather = await getWeatherAPI(lat, lon);
-    } catch(e) {
-        const weather = {
-            code: 'Limit Reached',
-            temp: 0,
-            condition_slug: '',
-            icon: '',
-        };
-    }
 
+    const weather = await getWeatherAPI(lat, lon);
 
     res.status(200).json({ ip, userInfo, isOnWater, weather });
 }
