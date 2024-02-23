@@ -15,7 +15,6 @@ export default function Home() {
 
     useEffect(() => {
         const fetch = async () => {
-            console.log("useefect")
             axios
                 .get("https://client-info-by-ip.vercel.app/api/get-ip")
                 .then((e) => {
@@ -28,8 +27,7 @@ export default function Home() {
 
     return (
         <main className="container min-h-screen pt-4 sm:text-lg text-base">
-            OOOOOOOOOOOOI
-            {/* {userInfo && <UserForm userData={userInfo} />} */}
+            {userInfo && <UserForm userData={userInfo} />}
         </main>
     );
 }
