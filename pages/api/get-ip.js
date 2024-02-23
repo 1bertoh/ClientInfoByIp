@@ -19,12 +19,12 @@ export default async function handler(req, res) {
         req.headers["x-forwarded-for"] ||
         req.connection.remoteAddress;
 
-    // const userInfo = await getIP(ip);
-    // const lat = userInfo.latitude;
-    // const lon = userInfo.longitude;
-    // const isOnWater = await getIsOnWaterAPI(lat, lon)
+    const userInfo = await getIP(ip);
+    const lat = userInfo.latitude;
+    const lon = userInfo.longitude;
+    const isOnWater = await getIsOnWaterAPI(lat, lon)
 
-    // const weather = await getWeatherAPI(lat, lon);
+    const weather = await getWeatherAPI(lat, lon);
 
-    res.status(200).json({ ip});
+    res.status(200).json({ ip, userInfo, isOnWater, weather });
 }
