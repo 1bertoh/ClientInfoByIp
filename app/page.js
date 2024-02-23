@@ -4,10 +4,6 @@ import Image from "next/image";
 import Field from "@/app/_components/Field";
 import DropWater from "@/icons/water-drop";
 import Mountain from "@/icons/mountain";
-import Sun from "@/icons/sun";
-import getIP from "@/api/getIP";
-import getIsOnWaterAPI from "@/api/getIsOnWaterAPI";
-import getWeatherAPI from "@/api/getWeatherAPI";
 import WaterDropColored from "@/icons/water-drop-colored";
 import MountainColored from "@/icons/mountain-colored";
 import Tooltip from "@/app/_components/Tooltip";
@@ -17,6 +13,36 @@ import { useEffect, useState } from "react";
 export default function Home() {
     const [userInfo, setUserInfo] = useState(null)
 
+    useEffect(() => {
+        axios.get("https://client-info-by-ip.vercel.app/api/get-ip")
+        .then(e => {
+            setUserInfo(e.data)
+        })
+    },[])
+
+    return (
+        <main className="container min-h-screen pt-4 sm:text-lg text-base">
+        {
+            userInfo &&
+            <UserForm userData={userInfo}  />
+
+        }
+        </main>
+    );
+}
+
+/**
+ * 
+ * @param {{
+ * userData:{
+    * ip:String, userInfo:{latitute:Number,longitute:Number,regionName:String, city:String},
+    * isOnWater:{isOnWater:Boolean},weather:{code:String, temp:Number, condition_slug:String, icon:SVG}
+ * }
+ * }} userData
+ * @returns 
+ */
+const UserForm = ({userData}) => {
+    const {ip, isOnWater, userInfo, weather} = userData
     const local = [
         {
             icon: (isOnWater) =>
@@ -41,33 +67,7 @@ export default function Home() {
                 !isOnWater ? "on-local-ground" : "input-bg-color",
         },
     ];
-
-    useEffect(() => {
-        axios.get("https://client-info-by-ip.vercel.app/api/get-ip")
-        .then(e => setUserInfo(e.data))
-    },[])
-
-    return (
-        <main className="container min-h-screen pt-4 sm:text-lg text-base">
-        {
-            userInfo &&
-            <UserForm useInfo={userInfo} />
-
-        }
-        </main>
-    );
-}
-
-/**
- * 
- * @param {{
- * ip:String, userInfo:{latitute:Number,longitute:Number,regionName:String, city:String},
- * isOnWater:{isOnWater:Boolean},weather:{code:String, temp:Number, condition_slug:String, icon:SVG}
- * }} userData
- * @returns 
- */
-const UserForm = (userData) => {
-    const {ip, isOnWater, userInfo, weather} = userData
+    
     return (
         <>
             <Field

@@ -2,7 +2,7 @@ import getIP from "@/api/getIP";
 import getWeatherAPI from "@/api/getWeatherAPI";
 
 import Cors from "cors";
-import initMiddleware from "@/utils/init-middleware"; // Crie um arquivo init-middleware.js para inicializar o middleware
+import initMiddleware from "@/utils/init-middleware";
 
 const cors = initMiddleware(
     Cors({
@@ -12,7 +12,7 @@ const cors = initMiddleware(
 
 export default async function handler(req, res) {
     await cors(req, res);
-    
+
     const ip =
         req.headers["x-real-ip"] ||
         req.headers["x-forwarded-for"] ||
@@ -21,8 +21,8 @@ export default async function handler(req, res) {
     const userInfo = await getIP(ip);
     const lat = userInfo.latitude;
     const lon = userInfo.longitude;
-    // const isOnWater = await getIsOnWaterAPI(lat, lon) //SÓ FUNCIONA LOCALMENTE
-    const isOnWater = { isOnWater: false };
+    const isOnWater = await getIsOnWaterAPI(lat, lon) //SÓ FUNCIONA LOCALMENTE
+    // const isOnWater = { isOnWater: false };
 
     const weather = await getWeatherAPI(lat, lon);
 
