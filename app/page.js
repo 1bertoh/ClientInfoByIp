@@ -18,12 +18,13 @@ export default function Home() {
             .get("https://client-info-by-ip.vercel.app/api/get-ip")
             .then((e) => {
                 setUserInfo(e.data);
+                console.log(e)
             });
     }, []);
 
     return (
         <main className="container min-h-screen pt-4 sm:text-lg text-base">
-            {userInfo && <UserForm userData={userInfo} />}
+            {/* {userInfo && <UserForm userData={userInfo} />} */}
         </main>
     );
 }
