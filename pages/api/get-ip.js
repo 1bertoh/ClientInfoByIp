@@ -22,8 +22,7 @@ export default async function handler(req, res) {
     const userInfo = await getIP(ip);
     const lat = userInfo.latitude;
     const lon = userInfo.longitude;
-    const isOnWater = await getIsOnWaterAPI(lat, lon) //SÓ FUNCIONA LOCALMENTE
-    // const isOnWater = { isOnWater: false };
+    const isOnWater = await getIsOnWaterAPI(lat, lon)
 
     const weather = await getWeatherAPI(lat, lon);
 
