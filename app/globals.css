@@ -29,7 +29,7 @@ body {
 
 input:disabled {
     background-color: #f2f4f6;
-    color: rgb(139, 138, 138);
+    color: rgb(118, 115, 115);
 }
 
 .input-bg-color {
