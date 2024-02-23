@@ -3,6 +3,7 @@ import getWeatherAPI from "@/api/getWeatherAPI";
 
 import Cors from "cors";
 import initMiddleware from "@/utils/init-middleware";
+import getIsOnWaterAPI from "@/api/getIsOnWaterAPI";
 
 const cors = initMiddleware(
     Cors({
