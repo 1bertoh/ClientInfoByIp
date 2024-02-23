@@ -107,11 +107,12 @@ const UserForm = ({ userData }) => {
                     })}
                 </div>
             </div>
-            {weather.code === "Limite Reached" ? (
+            {/* {weather.code === "Limite Reached" ? (
                 <p>
                     Limite da API: https://api.hgbrasil.com/weather de requests
                 </p>
             ) : (
+            )} */}
                 <div className="mt-10">
                     <span className="font-bold sm:block">
                         Está muito calor?
@@ -142,7 +143,6 @@ const UserForm = ({ userData }) => {
                         </div>
                     </div>
                 </div>
-            )}
         </>
     );
 };
