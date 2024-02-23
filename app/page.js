@@ -14,20 +14,26 @@ export default function Home() {
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
-        const fetch = async () => {
-            axios
-                .get("https://client-info-by-ip.vercel.app/api/get-ip")
-                .then((e) => {
-                    setUserInfo(e.data);
-                    console.log(e)
-                });
+        try{
+            const fetch = async () => {
+                axios
+                    .get("https://client-info-by-ip.vercel.app/api/get-ip")
+                    .then((e) => {
+                        setUserInfo(e.data);
+                        console.log(e)
+                    });
+            }
+            fetch()
+        } catch(e){
+            return (
+                <Erro/>
+            )
         }
-        fetch()
     }, []);
 
     return (
         <main className="container min-h-screen pt-4 sm:text-lg text-base">
-            {userInfo && <UserForm userData={userInfo} />}
+            {userInfo && <UserForm userData={userInfo}/>}
         </main>
     );
 }
@@ -48,9 +54,9 @@ const UserForm = ({ userData }) => {
         {
             icon: (isOnWater) =>
                 isOnWater ? (
-                    <WaterDropColored className="h-auto w-7" />
+                    <WaterDropColored className="h-auto w-4" />
                 ) : (
-                    <DropWater className="h-auto w-7" />
+                    <DropWater className="h-auto w-4" />
                 ),
             text: "Sim",
             className: (isOnWater) =>
@@ -59,9 +65,9 @@ const UserForm = ({ userData }) => {
         {
             icon: (isOnWater) =>
                 !isOnWater ? (
-                    <MountainColored className="h-auto w-7" />
+                    <MountainColored className="h-auto w-4" />
                 ) : (
-                    <Mountain className="h-auto w-7" />
+                    <Mountain className="h-auto w-4" />
                 ),
             text: "Não",
             className: (isOnWater) =>
@@ -86,7 +92,7 @@ const UserForm = ({ userData }) => {
                     prefix={"Cidade"}
                     value={userInfo.city}
                 />
-                <br />
+                <div className="mt-3"></div>
                 <Field
                     isDisabled={true}
                     prefix={"UF"}
@@ -101,22 +107,16 @@ const UserForm = ({ userData }) => {
                             <div
                                 key={l.text}
                                 className={`flex p-3 rounded-lg gap-3 w-min ${l.className(
-                                    isOnWater.isOnWater
+                                    isOnWater?.isOnWater
                                 )}`}
                             >
+                                {l.icon(isOnWater?.isOnWater)}
                                 <span>{l.text}</span>
-                                {l.icon(isOnWater.isOnWater)}
                             </div>
                         );
                     })}
                 </div>
             </div>
-            {/* {weather.code === "Limite Reached" ? (
-                <p>
-                    Limite da API: https://api.hgbrasil.com/weather de requests
-                </p>
-            ) : (
-            )} */}
                 <div className="mt-10">
                     <span className="font-bold sm:block">
                         Está muito calor?
@@ -150,3 +150,9 @@ const UserForm = ({ userData }) => {
         </>
     );
 };
+
+const Erro = () => {
+    return (
+        <h1>Houve um erro com as APIs</h1>
+    )
+}

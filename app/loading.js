@@ -1,13 +1,12 @@
 const { default: Image } = require("next/image")
 import gif from '@/public/loading/loading.gif'
 
-const Loading = () => {
-    console.log(gif)
+const loading = () => {
     return(
         <div>
-            {/* <Image src={} /> */}
+            <Image alt='loading' src={gif.src} />
         </div>
     )
 }
 
-module.exports = Loading
+module.exports = loading
