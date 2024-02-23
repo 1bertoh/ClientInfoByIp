@@ -14,6 +14,7 @@ export default function Home() {
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
+        console.log("useefect")
         axios
             .get("https://client-info-by-ip.vercel.app/api/get-ip")
             .then((e) => {
