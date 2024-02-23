@@ -1,7 +1,18 @@
 import getIP from "@/api/getIP";
 import getWeatherAPI from "@/api/getWeatherAPI";
 
+import Cors from "cors";
+import initMiddleware from "@/utils/init-middleware"; // Crie um arquivo init-middleware.js para inicializar o middleware
+
+const cors = initMiddleware(
+    Cors({
+        methods: ["GET", "POST", "OPTIONS"],
+    })
+);
+
 export default async function handler(req, res) {
+    await cors(req, res);
+    
     const ip =
         req.headers["x-real-ip"] ||
         req.headers["x-forwarded-for"] ||
