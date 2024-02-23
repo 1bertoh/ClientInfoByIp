@@ -14,26 +14,24 @@ export default function Home() {
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
-        try{
+        try {
             const fetch = async () => {
                 axios
                     .get("https://client-info-by-ip.vercel.app/api/get-ip")
                     .then((e) => {
                         setUserInfo(e.data);
-                        console.log(e)
+                        console.log(e);
                     });
-            }
-            fetch()
-        } catch(e){
-            return (
-                <Erro/>
-            )
+            };
+            fetch();
+        } catch (e) {
+            return <Erro />;
         }
     }, []);
 
     return (
         <main className="container min-h-screen pt-4 sm:text-lg text-base">
-            {userInfo && <UserForm userData={userInfo}/>}
+            {userInfo && <UserForm userData={userInfo} />}
         </main>
     );
 }
@@ -100,7 +98,7 @@ const UserForm = ({ userData }) => {
                 />
             </div>
             <div className="sm:flex gap-3 mt-20 items-center">
-                <span className="sm:block font-bold">Está na água?</span>
+                <span className="sm:block ps-1 font-bold">Está na água?</span>
                 <div className="flex gap-3">
                     {local.map((l) => {
                         return (
@@ -117,42 +115,40 @@ const UserForm = ({ userData }) => {
                     })}
                 </div>
             </div>
-                <div className="mt-10">
-                    <span className="font-bold sm:block">
-                        Está muito calor?
-                    </span>
-                    <div className="input-bg-color overflow-hidden mt-2 rounded-xl">
-                        <div
-                            className="inline-block "
-                            style={{
-                                marginLeft: "50%",
-                                transform: "translate(-50%)",
-                            }}
+            <div className="mt-10">
+                <span className="font-bold ps-1 sm:block">
+                    Está muito calor?
+                </span>
+                <div className="input-bg-color overflow-hidden mt-2 rounded-xl">
+                    <div
+                        className="inline-block "
+                        style={{
+                            marginLeft: "50%",
+                            transform: "translate(-50%)",
+                        }}
+                    >
+                        <Tooltip
+                            msg={
+                                weather.condition_slug === "clear_day"
+                                    ? "Muito"
+                                    : "Pouco"
+                            }
+                            className="mx-auto"
                         >
-                            <Tooltip
-                                msg={
-                                    weather.condition_slug === "clear_day"
-                                        ? "Muito"
-                                        : "Pouco"
-                                }
-                                className="mx-auto"
-                            >
-                                <Image
-                                    width={220}
-                                    height={220}
-                                    alt="weather"
-                                    src={`https://assets.hgbrasil.com/weather/icons/conditions/${weather.condition_slug}.svg`}
-                                />
-                            </Tooltip>
-                        </div>
+                            <Image
+                                width={220}
+                                height={220}
+                                alt="weather"
+                                src={`https://assets.hgbrasil.com/weather/icons/conditions/${weather.condition_slug}.svg`}
+                            />
+                        </Tooltip>
                     </div>
                 </div>
+            </div>
         </>
     );
 };
 
 const Erro = () => {
-    return (
-        <h1>Houve um erro com as APIs</h1>
-    )
-}
+    return <h1>Houve um erro com as APIs</h1>;
+};
