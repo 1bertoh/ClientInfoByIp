@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import Field from "@/app/_components/Field";
@@ -11,38 +11,35 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-    const [userInfo, setUserInfo] = useState(null)
+    const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
-        axios.get("https://client-info-by-ip.vercel.app/api/get-ip")
-        .then(e => {
-            setUserInfo(e.data)
-        })
-    },[])
+        axios
+            .get("https://client-info-by-ip.vercel.app/api/get-ip")
+            .then((e) => {
+                setUserInfo(e.data);
+            });
+    }, []);
 
     return (
         <main className="container min-h-screen pt-4 sm:text-lg text-base">
-        {
-            userInfo &&
-            <UserForm userData={userInfo}  />
-
-        }
+            {userInfo && <UserForm userData={userInfo} />}
         </main>
     );
 }
 
 /**
- * 
+ *
  * @param {{
  * userData:{
-    * ip:String, userInfo:{latitute:Number,longitute:Number,regionName:String, city:String},
-    * isOnWater:{isOnWater:Boolean},weather:{code:String, temp:Number, condition_slug:String, icon:SVG}
+ * ip:String, userInfo:{latitute:Number,longitute:Number,regionName:String, city:String},
+ * isOnWater:{isOnWater:Boolean},weather:{code:String, temp:Number, condition_slug:String, icon:SVG}
  * }
  * }} userData
- * @returns 
+ * @returns
  */
-const UserForm = ({userData}) => {
-    const {ip, isOnWater, userInfo, weather} = userData
+const UserForm = ({ userData }) => {
+    const { ip, isOnWater, userInfo, weather } = userData;
     const local = [
         {
             icon: (isOnWater) =>
@@ -67,7 +64,7 @@ const UserForm = ({userData}) => {
                 !isOnWater ? "on-local-ground" : "input-bg-color",
         },
     ];
-    
+
     return (
         <>
             <Field
@@ -110,34 +107,42 @@ const UserForm = ({userData}) => {
                     })}
                 </div>
             </div>
-            <div className="mt-10">
-                <span className="font-bold sm:block">Está muito calor?</span>
-                <div className="input-bg-color overflow-hidden mt-2 rounded-xl">
-                    <div
-                        className="inline-block "
-                        style={{
-                            marginLeft: "50%",
-                            transform: "translate(-50%)",
-                        }}
-                    >
-                        <Tooltip
-                            msg={
-                                weather.condition_slug === "clear_day"
-                                    ? "Muito"
-                                    : "Pouco"
-                            }
-                            className="mx-auto"
+            {weather.code === "Limite Reached" ? (
+                <p>
+                    Limite da API: https://api.hgbrasil.com/weather de requests
+                </p>
+            ) : (
+                <div className="mt-10">
+                    <span className="font-bold sm:block">
+                        Está muito calor?
+                    </span>
+                    <div className="input-bg-color overflow-hidden mt-2 rounded-xl">
+                        <div
+                            className="inline-block "
+                            style={{
+                                marginLeft: "50%",
+                                transform: "translate(-50%)",
+                            }}
                         >
-                            <Image
-                                width={220}
-                                height={220}
-                                alt="weather"
-                                src={`https://assets.hgbrasil.com/weather/icons/conditions/${weather.condition_slug}.svg`}
-                            />
-                        </Tooltip>
+                            <Tooltip
+                                msg={
+                                    weather.condition_slug === "clear_day"
+                                        ? "Muito"
+                                        : "Pouco"
+                                }
+                                className="mx-auto"
+                            >
+                                <Image
+                                    width={220}
+                                    height={220}
+                                    alt="weather"
+                                    src={`https://assets.hgbrasil.com/weather/icons/conditions/${weather.condition_slug}.svg`}
+                                />
+                            </Tooltip>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
         </>
-    )
-}
+    );
+};
